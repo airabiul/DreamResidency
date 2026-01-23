@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "estate_title": "Luxury Family Apartment",
+    "segment_name": "Residential",
+    "image": "https://example.com/images/apartment1.jpg",
+    "description": "A modern luxury apartment suitable for families with premium amenities and security.",
+    "price": "$120,000",
+    "status": "sale",
+    "area": "1800 sq ft",
+    "location": "Dhanmondi, Dhaka"
+  },
+  {
+    "id": 2,
+    "estate_title": "Modern City Flat",
+    "segment_name": "Residential",
+    "image": "https://example.com/images/apartment2.jpg",
+    "description": "A stylish city flat located near schools, hospitals, and shopping centers.",
+    "price": "$850 / month",
+    "status": "rent",
+    "area": "1200 sq ft",
+    "location": "Mirpur, Dhaka"
+  },
+  {
+    "id": 3,
+    "estate_title": "Independent Duplex House",
+    "segment_name": "Residential",
+    "image": "https://example.com/images/house1.jpg",
+    "description": "A spacious duplex house with private garden and modern interior design.",
+    "price": "$250,000",
+    "status": "sale",
+    "area": "3000 sq ft",
+    "location": "Uttara, Dhaka"
+  },
+  {
+    "id": 4,
+    "estate_title": "Budget Friendly Apartment",
+    "segment_name": "Residential",
+    "image": "https://example.com/images/apartment3.jpg",
+    "description": "Affordable apartment ideal for small families or working professionals.",
+    "price": "$600 / month",
+    "status": "rent",
+    "area": "950 sq ft",
+    "location": "Mohammadpur, Dhaka"
+  },
+  {
+    "id": 5,
+    "estate_title": "Premium Lake View Condo",
+    "segment_name": "Residential",
+    "image": "https://example.com/images/condo1.jpg",
+    "description": "Premium condo with lake view, high security, and luxury facilities.",
+    "price": "$1,500 / month",
+    "status": "rent",
+    "area": "1600 sq ft",
+    "location": "Gulshan, Dhaka"
+  },
+  {
+    "id": 6,
+    "estate_title": "Classic Residential Villa",
+    "segment_name": "Residential",
+    "image": "https://example.com/images/villa1.jpg",
+    "description": "A classic-designed villa with large open space and family-friendly environment.",
+    "price": "$420,000",
+    "status": "sale",
+    "area": "4500 sq ft",
+    "location": "Purbachal, Dhaka"
+  },
+  {
+    "id": 7,
+    "estate_title": "Elegant City Studio",
+    "segment_name": "Residential",
+    "image": "https://example.com/images/studio1.jpg",
+    "description": "Compact studio apartment perfect for single professionals in the heart of the city.",
+    "price": "$700 / month",
+    "status": "rent",
+    "area": "700 sq ft",
+    "location": "Banani, Dhaka"
+  },
+  {
+    "id": 8,
+    "estate_title": "Family Townhouse",
+    "segment_name": "Residential",
+    "image": "https://example.com/images/townhouse1.jpg",
+    "description": "Spacious townhouse with modern amenities, ideal for a growing family.",
+    "price": "$200,000",
+    "status": "sale",
+    "area": "2500 sq ft",
+    "location": "Gulshan, Dhaka"
+  },
+  {
+    "id": 9,
+    "estate_title": "Seaside Penthouse",
+    "segment_name": "Residential",
+    "image": "https://example.com/images/penthouse1.jpg",
+    "description": "Luxury penthouse with stunning sea view and exclusive facilities.",
+    "price": "$750,000",
+    "status": "sale",
+    "area": "3500 sq ft",
+    "location": "Cox's Bazar, Bangladesh"
+  }
+]

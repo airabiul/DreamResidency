@@ -1,9 +1,35 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../provider/AuthProvider";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import AuthProvider, { AuthContext } from "../provider/AuthProvider";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase/Firebase.config";
+
+const googleProvider = new GoogleAuthProvider();
+
+
+ 
 
 const Loging = () => {
+         const handlaGoogleLogin = () =>{
+    
+        signInWithPopup(auth, googleProvider)
+        .then(result =>{
+          console.log(result.user)
+          setUser(result.user)
+        })
+        .catch(error =>{
+          console.log('ERROR', error);
+        })
+       }
+
+  const [user, setUser] = useState(null);
+
   const {signIn} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  console.log('login location page', location);
+
     const handleLogin = e =>{
         e.preventDefault();
         const email = e.target.email.value;
@@ -13,11 +39,12 @@ const Loging = () => {
         signIn(email, password)
         .then(result =>{
           console.log(result.user);
+          // navigate after login
+          navigate(location?.state ? location.state : '/');
         })
         .catch(error=>{
           console.log(error.user);
         })
-       
 
     }
   return (
@@ -46,10 +73,14 @@ const Loging = () => {
                   </a>
                 </label>
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control mt-2">
                 <button className="btn btn-primary">Login</button>
-              </div>
+              </div>  
             </form>
+              <div className="form-control  m-5">
+                <button onClick={handlaGoogleLogin} className="btn btn-primary">Login with google</button>
+              </div>
+
             <p className="m-5">Don,t Have an account? <Link to='/registerpage'><button className="font-semibold text-blue-600">Register Please!</button></Link></p>
           </div>
         </div>

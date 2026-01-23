@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import {Link, NavLink } from 'react-router-dom';
 import profileImage from "../assets/profile-image.png"
 import { AuthContext } from '../provider/AuthProvider';
-import { Result } from 'postcss';
+
 
 const Header = () => {
   const {user, logOut} = useContext(AuthContext);

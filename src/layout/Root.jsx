@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
-import Loging from "../pages/Loging";
+
 
 const Root = () => {
     return (
