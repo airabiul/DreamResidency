@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Regigter = () => {
 const {createUser} = useContext(AuthContext);
 const [registerError, setRegisterError] = useState('');
-const [password, setPassword] = useState();
+const [password, setPassword] = useState('');
 const [success, setSuccess] = useState('');
-
+const [showPassword, setShowPassword] = useState(false);
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -15,8 +16,6 @@ const [success, setSuccess] = useState('');
     const photo = e.target.photo.value;
     const password = e.target.password.value;
     console.log(name, email, photo, password);
-
-   
 
     // Reset error
     setRegisterError('');
@@ -27,8 +26,6 @@ const [success, setSuccess] = useState('');
       setPassword('You shoul Use Lest 6 Crector or Longer');
       return;
     }
-
- 
 
     // Create User
     createUser(email, password)
@@ -51,7 +48,7 @@ const [success, setSuccess] = useState('');
             <h1 className="text-5xl text-center font-bold mb-5 mt-3">Register now!</h1>
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <form onSubmit={handleRegister} className="card-body">
+            <form onSubmit = {handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -74,20 +71,26 @@ const [success, setSuccess] = useState('');
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  name="password"
-                  className="input input-bordered"
-                  required
-                />
+
+                <div className="relative w-full">
+                  <input
+                    type= {showPassword ? 'text' : "password" }
+                    placeholder="password"
+                    name="password"
+                    className="input input-bordered w-full"
+                    required />
+                  <span className=" absolute top-4 right-3 hover:underline" onClick={()=> setShowPassword (!showPassword)}>
+                    {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye> }
+                  </span>
+
+                </div>
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
                   </a>
                 </label>
               </div>
-              <div className="form-control mt-2">
+              <div className="form-control mt-2 mb-0">
                 <button className="btn btn-primary">Register</button>
               </div>
             </form>
