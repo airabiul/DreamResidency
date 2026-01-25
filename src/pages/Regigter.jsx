@@ -90,7 +90,7 @@ const [showPassword, setShowPassword] = useState(false);
                   </a>
                 </label>
               </div>
-              <div className="form-control mt-2 mb-0">
+              <div className="form-control mt-2">
                 <button className="btn btn-primary">Register</button>
               </div>
             </form>

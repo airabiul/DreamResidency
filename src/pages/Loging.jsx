@@ -7,15 +7,16 @@ import { auth } from "../firebase/Firebase.config";
 const googleProvider = new GoogleAuthProvider();
 
 
- 
-
 const Loging = () => {
+ const [showPassword, setShowPassword] = useState(false);
+ const [registerError, setRegisterError] = useState('');
+ const [success, setSuccess] = useState('');
          const handlaGoogleLogin = () =>{
-    
         signInWithPopup(auth, googleProvider)
         .then(result =>{
           console.log(result.user)
           setUser(result.user)
+          
         })
         .catch(error =>{
           console.log('ERROR', error);
@@ -23,6 +24,7 @@ const Loging = () => {
        }
 
   const [user, setUser] = useState(null);
+
 
   const {signIn} = useContext(AuthContext);
   const location = useLocation();
@@ -36,14 +38,20 @@ const Loging = () => {
         const password = e.target.password.value
         console.log(email, password);
 
+        // reset
+        setSuccess('');
+         setRegisterError('');
+
         signIn(email, password)
         .then(result =>{
           console.log(result.user);
+          setSuccess('Login Success');
           // navigate after login
           navigate(location?.state ? location.state : '/');
         })
         .catch(error=>{
           console.log(error.user);
+          setRegisterError('Use Correct email & password');
         })
 
     }
@@ -52,7 +60,7 @@ const Loging = () => {
       <div className="hero bg-base-200 mt-5">
         <div className="">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl text-center font-bold mb-5">Login now!</h1>
+            <h1 className="text-5xl text-center font-bold mb-3">Login now!</h1>
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <form onSubmit={handleLogin} className="card-body">
@@ -60,15 +68,20 @@ const Loging = () => {
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input type="email" placeholder="email" name="email" className="input input-bordered" required />
+                <input type="email" placeholder="email" name="email" className="input input-bordered mb-3" required />
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" placeholder="password" name="password" className="input input-bordered" required />
+
+               <div className="relative">
+                 <input type={showPassword ? "text" : "password"} placeholder="password" name="password" className="input input-bordered w-full" required />
+                <span onClick={()=> setShowPassword(!showPassword)} className="absolute top-3 right-4 cursor-pointer">{showPassword ? "Hide" : "Show" }</span>
+               </div>
+
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <a href="#" className="label-text-alt link link-hover mt-5">
                     Forgot password?
                   </a>
                 </label>
@@ -80,6 +93,12 @@ const Loging = () => {
               <div className="form-control  m-5">
                 <button onClick={handlaGoogleLogin} className="btn btn-primary">Login with google</button>
               </div>
+              {
+              registerError && <p className="text-red-700 font-medium text-center">Use Correct email & password</p>
+            }
+            {
+              success && <p className="text-green-700 font-medium text-center" >Login Success fully</p>
+            }
 
             <p className="m-5">Don,t Have an account? <Link to='/registerpage'><button className="font-semibold text-blue-600">Register Please!</button></Link></p>
           </div>
