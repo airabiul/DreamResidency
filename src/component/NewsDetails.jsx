@@ -1,11 +1,10 @@
-
 import { useLoaderData, useParams } from "react-router-dom";
 
 const NewsDetails = () => {
   const data = useLoaderData();
   const { id } = useParams();
 
-  const singleNews = data.find(item => item.id === parseInt(id));
+  const singleNews = data.find((item) => item.id === parseInt(id));
 
   if (!singleNews) {
     return <h2 className="text-center text-red-500">News Not Found!</h2>;
