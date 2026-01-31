@@ -4,7 +4,7 @@ import NewsCard from "../component/NewsCard";
 
 const Home = () => {
     const news = useLoaderData();
-    console.log(news);
+    // console.log(news);
     return (
         <div>
             <Slider></Slider>

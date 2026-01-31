@@ -4,11 +4,11 @@ import { AuthContext } from "../provider/AuthProvider";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Regigter = () => {
-const {createUser} = useContext(AuthContext);
-const [registerError, setRegisterError] = useState('');
-const [password, setPassword] = useState('');
-const [success, setSuccess] = useState('');
-const [showPassword, setShowPassword] = useState(false);
+  const { createUser } = useContext(AuthContext);
+  const [registerError, setRegisterError] = useState("");
+  const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -18,27 +18,26 @@ const [showPassword, setShowPassword] = useState(false);
     console.log(name, email, photo, password);
 
     // Reset error
-    setRegisterError('');
-    setSuccess('');
-    setPassword('');
+    setRegisterError("");
+    setSuccess("");
+    setPassword("");
 
-        if(password.length < 6){
-      setPassword('You shoul Use Lest 6 Crector or Longer');
+    if (password.length < 6) {
+      setPassword("You shoul Use Lest 6 Crector or Longer");
       return;
     }
 
     // Create User
     createUser(email, password)
-    .then(result =>{
-      console.log(result.user);
-      setSuccess('Registration Success Full !');
-    })
-     .catch(error =>{
-    console.log(error.user);
-    setRegisterError(error.message);
-  })
+      .then((result) => {
+        console.log(result.user);
+        setSuccess("Registration Success Full !");
+      })
+      .catch((error) => {
+        console.log(error.user);
+        setRegisterError(error.message);
+      });
   };
- 
 
   return (
     <div>
@@ -48,7 +47,7 @@ const [showPassword, setShowPassword] = useState(false);
             <h1 className="text-5xl text-center font-bold mb-5 mt-3">Register now!</h1>
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <form onSubmit = {handleRegister} className="card-body">
+            <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -74,15 +73,18 @@ const [showPassword, setShowPassword] = useState(false);
 
                 <div className="relative w-full">
                   <input
-                    type= {showPassword ? 'text' : "password" }
+                    type={showPassword ? "text" : "password"}
                     placeholder="password"
                     name="password"
                     className="input input-bordered w-full"
-                    required />
-                  <span className=" absolute top-4 right-3 hover:underline" onClick={()=> setShowPassword (!showPassword)}>
-                    {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye> }
+                    required
+                  />
+                  <span
+                    className=" absolute top-4 right-3 hover:underline"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>}
                   </span>
-
                 </div>
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
@@ -94,22 +96,15 @@ const [showPassword, setShowPassword] = useState(false);
                 <button className="btn btn-primary">Register</button>
               </div>
             </form>
-             {
-              password && <p className="text-red-700 font-medium text-center">You shoul Use Lest 6 Crector or Longer</p>
-            }
-             {
-              registerError && <p className="text-red-700 font-medium text-center">All ready in Used</p>
-            }
-            {
-              success && <p className="text-green-700 font-medium text-center" >Registration Success fully Create</p>
-            }
+            {password && <p className="text-red-700 font-medium text-center">You shoul Use Lest 6 Crector or Longer</p>}
+            {registerError && <p className="text-red-700 font-medium text-center">All ready in Used</p>}
+            {success && <p className="text-green-700 font-medium text-center">Registration Success fully Create</p>}
             <p className="m-5">
               Already Have an account?
               <Link to="/loginpage">
                 <button className="font-semibold text-blue-600">Loging Please!</button>
               </Link>
             </p>
-           
           </div>
         </div>
       </div>
