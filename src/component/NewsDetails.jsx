@@ -4,6 +4,11 @@ const NewsDetails = () => {
   const data = useLoaderData();
   const { id } = useParams();
 
+  // safety: data array না হলে
+  if (!Array.isArray(data)) {
+    return <h2 className="text-center text-red-500">Data Load Error!</h2>;
+  }
+
   const singleNews = data.find((item) => item.id === parseInt(id));
 
   if (!singleNews) {
@@ -13,7 +18,7 @@ const NewsDetails = () => {
   const { estate_title, image, segment_name, description, price, status, area, location } = singleNews;
 
   return (
-    <div className=" text-center max-w-4xl mx-auto p-5">
+    <div className="text-center max-w-4xl mx-auto p-5">
       <img className="w-full rounded-xl" src={image} alt={estate_title} />
 
       <h2 className="text-3xl font-bold mt-4">{estate_title}</h2>
