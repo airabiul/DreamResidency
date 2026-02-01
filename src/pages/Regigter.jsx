@@ -1,10 +1,13 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Regigter = () => {
-  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const { createUser, updateUser } = useContext(AuthContext);
+  const [user, setUser] = useState("");
   const [registerError, setRegisterError] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
@@ -31,6 +34,18 @@ const Regigter = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+            navigate("/");
+          })
+          .catch((error) => {
+            console.log(error.user);
+            setRegisterError(error.message);
+            setUser(user);
+          });
+
         setSuccess("Registration Success Full !");
       })
       .catch((error) => {
