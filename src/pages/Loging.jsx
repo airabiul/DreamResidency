@@ -14,12 +14,12 @@ const Loging = () => {
          const handlaGoogleLogin = () =>{
         signInWithPopup(auth, googleProvider)
         .then(result =>{
-          console.log(result.user)
+          (result.user)
           setUser(result.user)
           
         })
         .catch(error =>{
-          console.log('ERROR', error);
+          ('ERROR', error);
         })
        }
 
@@ -30,13 +30,13 @@ const Loging = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  console.log('login location page', location);
+  // console.log('login location page', location);
 
     const handleLogin = e =>{
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value
-        console.log(email, password);
+        // console.log(email, password);
 
         // reset
         setSuccess('');
@@ -44,13 +44,13 @@ const Loging = () => {
 
         signIn(email, password)
         .then(result =>{
-          console.log(result.user);
+          (result.user);
           setSuccess('Login Success');
           // navigate after login
           navigate(location?.state ? location.state : '/');
         })
         .catch(error=>{
-          console.log(error.user);
+          (error.user);
           setRegisterError('Use Correct email & password');
         })
 

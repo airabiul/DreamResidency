@@ -11,34 +11,44 @@ import NewsDetails from "../component/NewsDetails";
 const routers = createBrowserRouter([
   {
     path: "/",
-    element: <Root></Root>,
+    element: <Root />,
     children: [
       {
         path: "/",
-        element: <Home></Home>,
-        loader: () => fetch('/public/news.json'),
+        element: <Home />,
+        loader: async () => {
+          const res = await fetch("/news.json");
+          return res.json();
+        },
       },
       {
-        path: '/news/:id',
-        element: <PrivateRoute><NewsDetails></NewsDetails></PrivateRoute>,
-        loader: () => fetch('/public/news.json'),
+        path: "/news/:id",
+        element: (
+          <PrivateRoute>
+            <NewsDetails />
+          </PrivateRoute>
+        ),
+        loader: async () => {
+          const res = await fetch("/news.json");
+          return res.json();
+        },
       },
       {
-        path: '/loginpage',
-        element: <Loging></Loging>
+        path: "/loginpage",
+        element: <Loging />,
       },
       {
-        path: '/registerpage',
-        element: <Regigter></Regigter>
+        path: "/registerpage",
+        element: <Regigter />,
       },
       {
-        path: '/updateprofile',
-        element: <UpdateProfile></UpdateProfile>
+        path: "/updateprofile",
+        element: <UpdateProfile />,
       },
       {
-        path: '/userprofile',
-        element: <UserProfile></UserProfile>
-      }
+        path: "/userprofile",
+        element: <UserProfile />,
+      },
     ],
   },
 ]);

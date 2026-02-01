@@ -18,7 +18,7 @@ const Regigter = () => {
     const email = e.target.email.value;
     const photo = e.target.photo.value;
     const password = e.target.password.value;
-    console.log(name, email, photo, password);
+    // console.log(name, email, photo, password);
 
     // Reset error
     setRegisterError("");
@@ -33,7 +33,7 @@ const Regigter = () => {
     // Create User
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        (result.user);
 
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
@@ -41,7 +41,7 @@ const Regigter = () => {
             navigate("/");
           })
           .catch((error) => {
-            console.log(error.user);
+            (error.user);
             setRegisterError(error.message);
             setUser(user);
           });
@@ -49,7 +49,7 @@ const Regigter = () => {
         setSuccess("Registration Success Full !");
       })
       .catch((error) => {
-        console.log(error.user);
+        (error.user);
         setRegisterError(error.message);
       });
   };

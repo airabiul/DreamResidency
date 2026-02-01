@@ -9,10 +9,10 @@ const Header = () => {
   const handleSingOut = () => {
     logOut()
       .then((result) => {
-        console.log(result.user);
+        (result.user);
       })
       .catch((error) => {
-        console.log(error.message);
+        (error.message);
       });
   };
 
